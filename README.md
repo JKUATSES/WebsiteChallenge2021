@@ -75,7 +75,7 @@ With the asssumption that you are using frontend framework of your choice redesi
 ### Additional areas
 **Blog**
 - [ ] Make it have same design as the parent website.
-- [ ] Clone medium, so that one can be able to create profile, write a blogs and get user feedback via comments and claps.
+- [ ] Redesign the blog section, so that one can be able to create profile, write a blogs and get user feedback via comments and claps.
 - [ ] Make it a better place.
 
 
