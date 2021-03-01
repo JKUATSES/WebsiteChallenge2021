@@ -137,19 +137,19 @@ git pull origin main
 
 3. Create a new branch as follows
 ```shell
-git checkout -b rodney_osodo main
+git checkout -b <your_name> main
 ```
 
 4. See all branches created
 ```shell
 $ git branch
     main
-* rodney_osodo
+* <your_name>
 ```
 
 5. Push the new branch to github
 ```shell
-$ git push origin -u rodney_osodo
+$ git push origin -u <your_name>
 ```
 
 6. Make changes to the fork following the Challenge provided.
@@ -168,7 +168,7 @@ git commit -m "Commit message 😇"
 ```
 10. Push your code changes
 ```shell
-git push --set-upstream origin rodney_osodo
+git push --set-upstream origin <your_name>
 ```
 8. Make a [pull request](https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github) to the sesWebsiteChallenge2021 Repo.
 
