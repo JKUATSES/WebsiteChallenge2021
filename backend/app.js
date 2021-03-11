@@ -20,7 +20,7 @@ const app = express();
 
 
 
-mongoose.connect("mongodb+srv://smith:P0azDgKsVzVUUbY5@cluster0.ptmmu.mongodb.net/node-angular?retryWrites=true&w=majority", {useNewUrlParser: true,  useUnifiedTopology: true } )
+mongoose.connect("mongodb+srv://smith:P0azDgKsVzVUUbY5@cluster0.ptmmu.mongodb.net/SESWebChallenge?retryWrites=true&w=majority", {useNewUrlParser: true,  useUnifiedTopology: true } )
 .then( () =>{
   console.log("Connected to Database");
 })
@@ -56,7 +56,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.use("/api/user", userRoutes);
+app.use("/api/user", userRoutes);
 
 
 module.exports = app;
