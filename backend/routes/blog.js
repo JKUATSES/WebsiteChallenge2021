@@ -117,8 +117,14 @@ router.get("/:id", (req, res, next) =>{
 
 router.put("/update/:id", multer({storage: storage}).single("image"), (req, res, next) =>{
 
+  const url = req.protocol + "://" + req.get("host"); // server url
+  
   updateData = req.body;
   updateData.id = req.params.id;
+
+  if(req.file){
+    updateData.imagePath = url + "/images/blog/" + req.file.filename;
+  }
 
   Blog.updateOne({_id: req.params.id}, {$set:updateData})
   .then(result => {
