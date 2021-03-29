@@ -6,29 +6,28 @@ const jwt = require('jsonwebtoken')
 const User = require('../models/user');
 
 
-router.post("/signup", (req, res, next) =>{
 
+router.post("/register", (req, res, next) =>{
+  console.log(req.body)
   bcrypt.hash(req.body.password, 10)
   .then( hash =>{
-    const user = new User({
-      email: req.body.email,
-      password: hash,
-      userType: req.body.userType,
-    });
+    const user = new User(req.body);
+    user.password = hash;
 
     user.save()
     .then(result =>{
-      res.status(210).json({
+      res.status(200).json({
         message: "user created",
-        result: result
+        result:result
       });
     })
-    .catch(err =>{
+    .catch((err) =>{
       res.status(500).json({
         error: err
       });
-    })
-  });
+    });
+  })
+
 
 });
 

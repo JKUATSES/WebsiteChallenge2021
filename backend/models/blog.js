@@ -6,11 +6,10 @@ const blogSchema = mongoose.Schema({
   topic: {type: String, required: true},
   subTopic: {type: String, required: true},
   content: {type: String, required: true},
-  imagePath: {type: String, required},
+  imagePath: {type: String, required: true},
   authorID: {type: String, required: true},
   author: {type: String, required: true},
-  date: {type: String, required: true},
-  comments: {type: Array, required: true},
+  date: {type: Date, required: true},
   claps: {type: Number, required: true},
 });
 

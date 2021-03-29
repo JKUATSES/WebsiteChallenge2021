@@ -7,14 +7,14 @@ const mongoose = require('mongoose');
 
 
 const userRoutes = require('./routes/user');
-const aboutRoutes = require('./routes/user');
-const archiveRoutes = require('./routes/user');
-const blogRoutes = require('./routes/user');
-const eventsRoutes = require('./routes/user');
-const galleryRoutes = require('./routes/user');
-const partnersRoutes = require('./routes/user');
-const servicesRoutes = require('./routes/user');
-const teamRoutes = require('./routes/user');
+const blogRoutes = require('./routes/blog.js');
+// const aboutRoutes = require('./routes/user');
+// const archiveRoutes = require('./routes/user');
+// const eventsRoutes = require('./routes/user');
+// const galleryRoutes = require('./routes/user');
+// const partnersRoutes = require('./routes/user');
+// const servicesRoutes = require('./routes/user');
+// const teamRoutes = require('./routes/user');
 
 const app = express();
 
@@ -57,6 +57,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/api/user", userRoutes);
+app.use("/api/blog", blogRoutes);
 
 
 module.exports = app;
