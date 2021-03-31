@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
     if(isValid){
       error = null;
     }
-    cback(error, "backend/images/team"); // destination folder
+    cback(error, "backend/images/services"); // destination folder
   },
   filename: (req, file, cback)=>{
     const name = file.originalname.toLowerCase().split(' ').join('-');
@@ -38,7 +38,7 @@ router.post("/addservice", multer({storage: storage}).single("image") ,(req, res
   const service = new Service({
     serviceName: req.body.serviceName,
     description: req.body.description,
-    imagePath: url + "/images/team/", //+ req.file.filename,
+    imagePath: url + "/images/services/"+ req.file.filename,
   });
 
 
@@ -116,7 +116,7 @@ router.put("/updateservice/:id", multer({storage: storage}).single("image"), (re
   updateData.id = req.params.id;
 
   if(req.file){
-    updateData.imagePath = url + "/images/team/" + req.file.filename;
+    updateData.imagePath = url + "/images/services/" + req.file.filename;
   }
 
   Service.updateOne({_id: req.params.id}, {$set:updateData})
