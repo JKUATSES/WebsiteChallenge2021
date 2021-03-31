@@ -1,7 +1,8 @@
 const express = require('express');
 const multer = require("multer");
+const path = require("path");
 
-const Service = require('../models/services'); 
+const Service = require('../models/service'); 
 
 // multer configuration to handle file uploads to server
 const MIME_TYPE_MAP = {
@@ -21,10 +22,10 @@ const storage = multer.diskStorage({
     cback(error, "backend/images/services"); // destination folder
   },
   filename: (req, file, cback)=>{
-    const name = file.originalname.toLowerCase().split(' ').join('-');
+    const fileName = path.parse(file.originalname.toLowerCase().split(' ').join('-')).name;
     const ext = MIME_TYPE_MAP[file.mimetype];
 
-    cback(null, name + "-" + Date.now() + "." + ext);
+    cback(null, fileName + "-" + Date.now() + "." + ext);
   }
 
   });
@@ -66,7 +67,7 @@ router.get("",(req, res, next) => {
   //pagination query
   const pageSize = +req.query.pagesize; 
   const currentPage = +req.query.page;
-  const serviceQuery = service.find();
+  const serviceQuery = Service.find();
   let fetchedservices;
 
   if(pageSize && currentPage){

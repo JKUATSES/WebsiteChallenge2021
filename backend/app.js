@@ -12,9 +12,10 @@ const teamRoutes = require('./routes/member');
 const servicesRoutes = require('./routes/services');
 const partnersRoutes = require('./routes/partners');
 const galleryRoutes = require('./routes/gallery');
-// const aboutRoutes = require('./routes/user');
+const eventsRoutes = require('./routes/events');
+const aboutRoutes = require('./routes/about');
 // const archiveRoutes = require('./routes/user');
-// const eventsRoutes = require('./routes/user'); 
+ 
 
 
 const app = express();
@@ -63,6 +64,8 @@ app.use("/api/team", teamRoutes);
 app.use("/api/services", servicesRoutes);
 app.use("/api/partners", partnersRoutes);
 app.use("/api/gallery", galleryRoutes);
+app.use("/api/events", eventsRoutes);
+app.use("/api/about", aboutRoutes);
 
 
 module.exports = app;

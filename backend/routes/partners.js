@@ -1,7 +1,7 @@
 const express = require('express');
 const multer = require("multer");
 
-const Partner = require('../models/partners'); 
+const Partner = require('../models/partner'); 
 
 const router = express.Router();
 

@@ -1,5 +1,6 @@
 const express = require('express');
 const multer = require("multer");
+const path = require("path");
 
 const Photo = require('../models/photo'); 
 
@@ -21,10 +22,10 @@ const storage = multer.diskStorage({
     cback(error, "backend/images/gallery"); // destination folder
   },
   filename: (req, file, cback)=>{
-    const name = file.originalname.toLowerCase().split(' ').join('-');
+    const fileName = path.parse(file.originalname.toLowerCase().split(' ').join('-')).name;
     const ext = MIME_TYPE_MAP[file.mimetype];
 
-    cback(null, name + "-" + Date.now() + "." + ext);
+    cback(null, fileName + "-" + Date.now() + "." + ext);
   }
 
   });
