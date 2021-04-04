@@ -39,7 +39,7 @@ router.post("/addphoto", multer({storage: storage}).single("image") ,(req, res) 
   const photo = new Photo({
     imagePath: url + "/images/gallery/" + req.file.filename,
     description: req.body.description,
-    date: req.body.date
+    date: new Date(req.body.date)
   });
 
 
@@ -80,7 +80,7 @@ router.get("",(req, res, next) => {
  
   galleryQuery.then( documents => {
     fetchedPhotos = documents;
-    return gallery.countDocuments();
+    return Gallery.countDocuments();
   })
   .then(count =>{
     res.status(200).json({
@@ -115,6 +115,7 @@ router.put("/updatephoto/:id", multer({storage: storage}).single("image"), (req,
   
   updateData = req.body;
   updateData.id = req.params.id;
+  updateData.date = new Date(req.body.date);
 
   if(req.file){
     updateData.imagePath = url + "/images/gallery/" + req.file.filename;

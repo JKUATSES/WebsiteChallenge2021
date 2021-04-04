@@ -12,8 +12,8 @@ router.post("/addpartner",(req, res) => {
   const partner = new Partner({
     companyName: req.body.companyName,
     status: req.body.status,
-    startDate: req.body.startDate,
-    endDate: req.body.endDate,
+    startDate:  new Date(req.body.startDate),
+    endDate: new Date(req.body.endDate)
   });
 
 
@@ -54,7 +54,7 @@ router.get("",(req, res, next) => {
  
   partnerQuery.then( documents => {
     fetchedpartners = documents;
-    return partner.countDocuments();
+    return Partner.countDocuments();
   })
   .then(count =>{
     res.status(200).json({
@@ -89,6 +89,8 @@ router.put("/updatepartner/:id", (req, res, next) =>{
   
   updateData = req.body;
   updateData.id = req.params.id;
+  updateData.startDate = new Date(req.body.startDate);
+  updateData.endDate = new Date(req.body.endDate);
 
   Partner.updateOne({_id: req.params.id}, {$set:updateData})
   .then(result => {

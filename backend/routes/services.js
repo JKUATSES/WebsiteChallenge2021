@@ -80,7 +80,7 @@ router.get("",(req, res, next) => {
  
   serviceQuery.then( documents => {
     fetchedservices = documents;
-    return service.countDocuments();
+    return Service.countDocuments();
   })
   .then(count =>{
     res.status(200).json({

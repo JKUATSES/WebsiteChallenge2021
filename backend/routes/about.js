@@ -55,7 +55,7 @@ router.get("",(req, res, next) => {
  
   aboutQuery.then( documents => {
     fetchedabouts = documents;
-    return about.countDocuments();
+    return About.countDocuments();
   })
   .then(count =>{
     res.status(200).json({

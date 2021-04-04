@@ -14,7 +14,7 @@ const partnersRoutes = require('./routes/partners');
 const galleryRoutes = require('./routes/gallery');
 const eventsRoutes = require('./routes/events');
 const aboutRoutes = require('./routes/about');
-// const archiveRoutes = require('./routes/user');
+const archiveRoutes = require('./routes/archives');
  
 
 
@@ -66,6 +66,7 @@ app.use("/api/partners", partnersRoutes);
 app.use("/api/gallery", galleryRoutes);
 app.use("/api/events", eventsRoutes);
 app.use("/api/about", aboutRoutes);
+app.use("/api/archives", archiveRoutes);
 
 
 module.exports = app;

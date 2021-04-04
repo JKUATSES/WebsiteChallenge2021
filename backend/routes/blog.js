@@ -43,7 +43,7 @@ router.post("/create", multer({storage: storage}).single("image") ,(req, res) =>
     imagePath: url + "/images/blog" + req.file.filename,
     authorID: req.body.authorID,
     author: req.body.author,
-    date: req.body.date,
+    date: new Date(req.body.date),
     claps: 0
   });
 
@@ -119,6 +119,7 @@ router.put("/update/:id", multer({storage: storage}).single("image"), (req, res,
   
   updateData = req.body;
   updateData.id = req.params.id;
+  updateData.date = new Date(req.body.date);
 
   if(req.file){
     updateData.imagePath = url + "/images/blog/" + req.file.filename;

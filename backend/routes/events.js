@@ -39,7 +39,7 @@ router.post("/addevent", multer({storage: storage}).single("image") ,(req, res) 
   const event = new Event({
     title: req.body.title,
     description: req.body.description,
-    date: req.body.date,
+    date: new Date(req.body.date),
     venue: req.body.venue,
     imagePath: url + "/images/events/" + req.file.filename,
   });
@@ -82,7 +82,7 @@ router.get("",(req, res, next) => {
  
   eventQuery.then( documents => {
     fetchedevents = documents;
-    return fetchedevents.countDocuments();
+    return Event.countDocuments();
   })
   .then(count =>{
     res.status(200).json({
@@ -117,6 +117,7 @@ router.put("/updateevent/:id", multer({storage: storage}).single("image"), (req,
   
   updateData = req.body;
   updateData.id = req.params.id;
+  updateData.date = new Date(req.body.date);
 
   if(req.file){
     updateData.imagePath = url + "/images/events/" + req.file.filename;

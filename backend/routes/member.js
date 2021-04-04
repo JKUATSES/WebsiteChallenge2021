@@ -42,8 +42,8 @@ router.post("/addmember", multer({storage: storage}).single("image") ,(req, res)
     lastName: req.body.lastName,
     role: req.body.role,
     imagePath: url + "/images/team/" + req.file.filename,
-    startDate: req.body.startDate,
-    endDate: req.body.endDate,
+    startDate: new Date(req.body.startDate),
+    endDate: new Date(req.body.endDate)
   });
 
 
@@ -119,6 +119,8 @@ router.put("/update-member/:id", multer({storage: storage}).single("image"), (re
   
   updateData = req.body;
   updateData.id = req.params.id;
+  updateData.startDate = new Date(req.body.startDate);
+  updateData.endDate = new Date(req.body.endDate);
 
   if(req.file){
     updateData.imagePath = url + "/images/team/" + req.file.filename;
