@@ -3,6 +3,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require("path");
 
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
+
+const ua = require('universal-analytics');
+
 const mongoose = require('mongoose');
 
 
@@ -17,8 +22,11 @@ const aboutRoutes = require('./routes/about');
 const archiveRoutes = require('./routes/archives');
  
 
-
 const app = express();
+
+app.use(cookieParser());
+app.use(session({secret: "keep this hidden"}));
+
 
 
 
@@ -58,6 +66,9 @@ app.use((req, res, next) => {
   next();
 });
 
+
+app.use(ua.middleware("UA-193746825-1", {cookieName: '_ga'}));
+
 app.use("/api/user", userRoutes);
 app.use("/api/blog", blogRoutes);
 app.use("/api/team", teamRoutes);
@@ -67,6 +78,7 @@ app.use("/api/gallery", galleryRoutes);
 app.use("/api/events", eventsRoutes);
 app.use("/api/about", aboutRoutes);
 app.use("/api/archives", archiveRoutes);
+
 
 
 module.exports = app;

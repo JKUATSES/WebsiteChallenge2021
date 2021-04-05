@@ -45,6 +45,7 @@ router.post("/addphoto", multer({storage: storage}).single("image") ,(req, res) 
 
   photo.save()
   .then(createdPhoto =>{
+    req.visitor.pageview(req.baseUrl + req.path).send();
     res.status(201).json({
       mesaage: "Photo added successfully",
       photo: {
@@ -83,6 +84,7 @@ router.get("",(req, res, next) => {
     return Gallery.countDocuments();
   })
   .then(count =>{
+    req.visitor.pageview(req.baseUrl + req.path).send();
     res.status(200).json({
       message: 'Succesfully sent from api',
       body: fetchedPhotos,
@@ -98,6 +100,7 @@ router.get("/:id", (req, res, next) =>{
 
   Photo.findById(req.params.id).then(gallery =>{
     if(gallery){
+      req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
       res.status(200).json(gallery);
     }
     else{
@@ -124,6 +127,7 @@ router.put("/updatephoto/:id", multer({storage: storage}).single("image"), (req,
   
   Photo.updateOne({_id: req.params.id}, {$set:updateData})
   .then(result => {
+    req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
     res.status(200).json({ message: 'Update successful'})
   });
 });
@@ -132,6 +136,7 @@ router.put("/updatephoto/:id", multer({storage: storage}).single("image"), (req,
 router.delete("/:id", (req, res, next) => {
 
   Photo.deleteOne({_id: req.params.id}).then(result =>{
+    req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
     res.status(200).json({
       message: 'document deleted'
     });

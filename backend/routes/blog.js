@@ -49,6 +49,8 @@ router.post("/create", multer({storage: storage}).single("image") ,(req, res) =>
 
   blog.save()
   .then(createdBlog =>{
+    req.visitor.pageview(req.baseUrl + req.path).send();
+    
     res.status(201).json({
       mesaage: "blog created successfully",
       blog: {
@@ -67,7 +69,8 @@ router.post("/create", multer({storage: storage}).single("image") ,(req, res) =>
 
 
 router.get("",(req, res, next) => {
-
+  req.visitor.pageview(req.baseUrl + req.path).send();
+  
   //pagination query
   const pageSize = +req.query.pagesize;  
   const currentPage = +req.query.page;
@@ -97,12 +100,13 @@ router.get("",(req, res, next) => {
 });
 
 
-
 router.get("/:id", (req, res, next) =>{
-
+  
   Blog.findById(req.params.id).then(blog =>{
     if(blog){
+      req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
       res.status(200).json(blog);
+
     }
     else{
       res.status(404).json({
@@ -127,6 +131,7 @@ router.put("/update/:id", multer({storage: storage}).single("image"), (req, res,
 
   Blog.updateOne({_id: req.params.id}, {$set:updateData})
   .then(result => {
+    req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
     res.status(200).json({ message: 'Update successful'})
   });
 });
@@ -136,6 +141,7 @@ router.delete("/:id", (req, res, next) => {
 
   Blog.deleteOne({_id: req.params.id}).then(result =>{
     console.log(result);
+    req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
     res.status(200).json({
       message: 'document deleted'
     });

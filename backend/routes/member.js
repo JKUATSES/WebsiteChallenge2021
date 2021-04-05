@@ -33,6 +33,7 @@ const router = express.Router();
 
 
 router.post("/addmember", multer({storage: storage}).single("image") ,(req, res) => {
+
   const url = req.protocol + "://" + req.get("host"); // server url
 
   const member = new Member({
@@ -49,6 +50,7 @@ router.post("/addmember", multer({storage: storage}).single("image") ,(req, res)
 
   member.save()
   .then(createdMember =>{
+    req.visitor.pageview(req.baseUrl + req.path).send();
     res.status(201).json({
       mesaage: "Member created successfully",
       member: {
@@ -67,6 +69,7 @@ router.post("/addmember", multer({storage: storage}).single("image") ,(req, res)
 
 
 router.get("",(req, res, next) => {
+  req.visitor.pageview(req.baseUrl + req.path).send();
 
   //pagination query
   const pageSize = +req.query.pagesize; 
@@ -102,6 +105,7 @@ router.get("/:id", (req, res, next) =>{
 
   Member.findById(req.params.id).then(member =>{
     if(member){
+      req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
       res.status(200).json(member);
     }
     else{
@@ -128,6 +132,7 @@ router.put("/update-member/:id", multer({storage: storage}).single("image"), (re
 
   Member.updateOne({_id: req.params.id}, {$set:updateData})
   .then(result => {
+    req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
     res.status(200).json({ message: 'Update successful'})
   });
 });
@@ -136,6 +141,8 @@ router.put("/update-member/:id", multer({storage: storage}).single("image"), (re
 router.delete("/:id", (req, res, next) => {
 
   Member.deleteOne({_id: req.params.id}).then(result =>{
+    
+    req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
     res.status(200).json({
       message: 'document deleted'
     });

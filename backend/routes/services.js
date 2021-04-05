@@ -45,6 +45,7 @@ router.post("/addservice", multer({storage: storage}).single("image") ,(req, res
 
   service.save()
   .then(createdservice =>{
+    req.visitor.pageview(req.baseUrl + req.path).send();
     res.status(201).json({
       mesaage: "service created successfully",
       service: {
@@ -64,6 +65,7 @@ router.post("/addservice", multer({storage: storage}).single("image") ,(req, res
 
 router.get("",(req, res, next) => {
 
+  req.visitor.pageview(req.baseUrl + req.path).send();
   //pagination query
   const pageSize = +req.query.pagesize; 
   const currentPage = +req.query.page;
@@ -98,6 +100,7 @@ router.get("/:id", (req, res, next) =>{
 
   Service.findById(req.params.id).then(service =>{
     if(service){
+      req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
       res.status(200).json(service);
     }
     else{
@@ -122,6 +125,7 @@ router.put("/updateservice/:id", multer({storage: storage}).single("image"), (re
 
   Service.updateOne({_id: req.params.id}, {$set:updateData})
   .then(result => {
+    req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
     res.status(200).json({ message: 'Update successful'})
   });
 });
@@ -130,6 +134,7 @@ router.put("/updateservice/:id", multer({storage: storage}).single("image"), (re
 router.delete("/:id", (req, res, next) => {
 
   Service.deleteOne({_id: req.params.id}).then(result =>{
+    req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
     res.status(200).json({
       message: 'document deleted'
     });

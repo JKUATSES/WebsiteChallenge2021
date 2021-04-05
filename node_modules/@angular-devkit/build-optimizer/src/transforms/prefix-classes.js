@@ -8,7 +8,7 @@ exports.getPrefixClassesTransformer = exports.testPrefixClasses = void 0;
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-const ts = require("../../third_party/github.com/Microsoft/TypeScript/lib/typescript");
+const ts = require("typescript");
 const ast_utils_1 = require("../helpers/ast-utils");
 function testPrefixClasses(content) {
     const exportVarSetter = /(?:export )?(?:var|const)\s+(?:\S+)\s*=\s*/;

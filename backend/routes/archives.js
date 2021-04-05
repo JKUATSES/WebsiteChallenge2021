@@ -1,5 +1,7 @@
 const express = require('express');
 
+
+
 const Member = require('../models/member'); 
 const Event = require('../models/event');
 
@@ -9,6 +11,7 @@ const router = express.Router();
 
 router.get("/events",(req, res, next) => {
 
+  req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
 
   //pagination query
   const pageSize = +req.query.pagesize; 
@@ -49,6 +52,7 @@ router.get("/events",(req, res, next) => {
     return Event.countDocuments();
   })
   .then(count =>{
+
     res.status(200).json({
       message: 'Succesfully sent from api',
       body: fetchedevents,
@@ -60,6 +64,8 @@ router.get("/events",(req, res, next) => {
 
 router.get("/members",(req, res, next) => {
 
+  req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
+  
     ///pagination query
   const pageSize = +req.query.pagesize; 
   const currentPage = +req.query.page;

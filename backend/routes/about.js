@@ -19,6 +19,8 @@ router.post("/create", (req, res) => {
 
   about.save()
   .then(createdabout =>{
+    req.visitor.pageview(req.baseUrl + req.path).send();
+
     res.status(201).json({
       mesaage: "about created successfully",
       about: {
@@ -38,6 +40,8 @@ router.post("/create", (req, res) => {
 
 
 router.get("",(req, res, next) => {
+
+  req.visitor.pageview(req.baseUrl + req.path).send();
 
   //pagination query
   const pageSize = +req.query.pagesize; 
@@ -73,6 +77,7 @@ router.get("/:id", (req, res, next) =>{
 
   About.findById(req.params.id).then(about =>{
     if(about){
+      req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
       res.status(200).json(about);
     }
     else{
@@ -93,6 +98,9 @@ router.put("/updateabout/:id", (req, res, next) =>{
 
   About.updateOne({_id: req.params.id}, {$set:updateData})
   .then(result => {
+
+    req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
+
     res.status(200).json({ message: 'Update successful'})
   });
 });
@@ -101,6 +109,8 @@ router.put("/updateabout/:id", (req, res, next) =>{
 router.delete("/:id", (req, res, next) => {
 
   About.deleteOne({_id: req.params.id}).then(result =>{
+    req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
+    
     res.status(200).json({
       message: 'document deleted'
     });

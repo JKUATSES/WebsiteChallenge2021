@@ -125,6 +125,7 @@ router.put("/updateevent/:id", multer({storage: storage}).single("image"), (req,
 
   Event.updateOne({_id: req.params.id}, {$set:updateData})
   .then(result => {
+    req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
     res.status(200).json({ message: 'Update successful'})
   });
 });
@@ -133,6 +134,7 @@ router.put("/updateevent/:id", multer({storage: storage}).single("image"), (req,
 router.delete("/:id", (req, res, next) => {
 
   Event.deleteOne({_id: req.params.id}).then(result =>{
+    req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
     res.status(200).json({
       message: 'document deleted'
     });

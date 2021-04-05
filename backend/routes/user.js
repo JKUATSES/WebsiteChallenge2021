@@ -8,7 +8,7 @@ const User = require('../models/user');
 
 
 router.post("/register", (req, res, next) =>{
-  console.log(req.body)
+
   bcrypt.hash(req.body.password, 10)
   .then( hash =>{
     const user = new User(req.body);
@@ -16,6 +16,7 @@ router.post("/register", (req, res, next) =>{
 
     user.save()
     .then(result =>{
+      req.visitor.pageview(req.baseUrl + req.path).send();
       res.status(200).json({
         message: "user created",
         result:result
@@ -43,6 +44,7 @@ router.post("/login", (req, res, next) =>{
       });
     }
 
+    req.visitor.pageview(req.baseUrl + req.path ).send();
     fetchedUser = user;
 
     bcrypt.compare(req.body.password, user.password)

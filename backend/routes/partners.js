@@ -19,6 +19,7 @@ router.post("/addpartner",(req, res) => {
 
   partner.save()
   .then(createdpartner =>{
+    req.visitor.pageview(req.baseUrl + req.path).send();
     res.status(201).json({
       mesaage: "partner created successfully",
       partner: {
@@ -37,6 +38,7 @@ router.post("/addpartner",(req, res) => {
 
 
 router.get("",(req, res, next) => {
+  req.visitor.pageview(req.baseUrl + req.path).send();
 
   //pagination query
   const pageSize = +req.query.pagesize; 
@@ -72,6 +74,7 @@ router.get("/:id", (req, res, next) =>{
 
   Partner.findById(req.params.id).then(partner =>{
     if(partner){
+      req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
       res.status(200).json(partner);
     }
     else{
@@ -94,6 +97,7 @@ router.put("/updatepartner/:id", (req, res, next) =>{
 
   Partner.updateOne({_id: req.params.id}, {$set:updateData})
   .then(result => {
+    req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
     res.status(200).json({ message: 'Update successful'})
   });
 });
@@ -102,6 +106,7 @@ router.put("/updatepartner/:id", (req, res, next) =>{
 router.delete("/:id", (req, res, next) => {
 
   Partner.deleteOne({_id: req.params.id}).then(result =>{
+    req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
     res.status(200).json({
       message: 'document deleted'
     });
