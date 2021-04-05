@@ -1,12 +1,14 @@
+const { chainedInstruction } = require('@angular/compiler/src/render3/view/util');
 const express = require('express');
 const multer = require("multer");
+const checkAuth = require('../middleware/check-auth');
 
 const Partner = require('../models/partner'); 
 
 const router = express.Router();
 
 
-router.post("/addpartner",(req, res) => {
+router.post("/addpartner", checkAuth, (req, res) => {
   const url = req.protocol + "://" + req.get("host"); // server url
 
   const partner = new Partner({
@@ -86,7 +88,7 @@ router.get("/:id", (req, res, next) =>{
 })
 
 
-router.put("/updatepartner/:id", (req, res, next) =>{
+router.put("/updatepartner/:id", checkAuth, (req, res, next) =>{
 
   const url = req.protocol + "://" + req.get("host"); // server url
   
@@ -103,7 +105,7 @@ router.put("/updatepartner/:id", (req, res, next) =>{
 });
 
 
-router.delete("/:id", (req, res, next) => {
+router.delete("/:id", checkAuth, (req, res, next) => {
 
   Partner.deleteOne({_id: req.params.id}).then(result =>{
     req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();

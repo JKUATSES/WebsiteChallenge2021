@@ -4,6 +4,8 @@ const path = require("path");
 
 const Event = require('../models/event'); 
 
+const checkAuth = require("../middleware/check-auth");
+
 // multer configuration to handle file uploads to server
 const MIME_TYPE_MAP = {
   'image/png': 'png',
@@ -33,7 +35,7 @@ const storage = multer.diskStorage({
 const router = express.Router();
 
 
-router.post("/addevent", multer({storage: storage}).single("image") ,(req, res) => {
+router.post("/addevent", checkAuth, multer({storage: storage}).single("image") ,(req, res) => {
   const url = req.protocol + "://" + req.get("host"); // server url
 
   const event = new Event({
@@ -111,7 +113,7 @@ router.get("/:id", (req, res, next) =>{
 })
 
 
-router.put("/updateevent/:id", multer({storage: storage}).single("image"), (req, res, next) =>{
+router.put("/updateevent/:id", checkAuth,  multer({storage: storage}).single("image"), (req, res, next) =>{
 
   const url = req.protocol + "://" + req.get("host"); // server url
   
@@ -131,7 +133,7 @@ router.put("/updateevent/:id", multer({storage: storage}).single("image"), (req,
 });
 
 
-router.delete("/:id", (req, res, next) => {
+router.delete("/:id", checkAuth, (req, res, next) => {
 
   Event.deleteOne({_id: req.params.id}).then(result =>{
     req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();

@@ -1,6 +1,7 @@
 const express = require('express');
 const multer = require("multer");
 const path = require("path");
+const checkAuth = require('../middleware/check-auth');
 
 const Service = require('../models/service'); 
 
@@ -33,7 +34,7 @@ const storage = multer.diskStorage({
 const router = express.Router();
 
 
-router.post("/addservice", multer({storage: storage}).single("image") ,(req, res) => {
+router.post("/addservice", checkAuth, multer({storage: storage}).single("image") ,(req, res) => {
   const url = req.protocol + "://" + req.get("host"); // server url
 
   const service = new Service({
@@ -112,7 +113,7 @@ router.get("/:id", (req, res, next) =>{
 })
 
 
-router.put("/updateservice/:id", multer({storage: storage}).single("image"), (req, res, next) =>{
+router.put("/updateservice/:id", checkAuth, multer({storage: storage}).single("image"), (req, res, next) =>{
 
   const url = req.protocol + "://" + req.get("host"); // server url
   
@@ -131,7 +132,7 @@ router.put("/updateservice/:id", multer({storage: storage}).single("image"), (re
 });
 
 
-router.delete("/:id", (req, res, next) => {
+router.delete("/:id", checkAuth, (req, res, next) => {
 
   Service.deleteOne({_id: req.params.id}).then(result =>{
     req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();

@@ -1,5 +1,8 @@
 const express = require('express');
 const multer = require("multer");
+const path = require("path");
+
+const checkAuth = require('../middleware/check-auth');
 
 const Blog = require('../models/blog'); 
 
@@ -32,7 +35,7 @@ const storage = multer.diskStorage({
 const router = express.Router();
 
 
-router.post("/create", multer({storage: storage}).single("image") ,(req, res) => {
+router.post("/create", checkAuth, multer({storage: storage}).single("image") ,(req, res) => {
   const url = req.protocol + "://" + req.get("host"); // server url
   const blog = new Blog({
     title: req.body.title,
@@ -117,14 +120,16 @@ router.get("/:id", (req, res, next) =>{
 })
 
 
-router.put("/update/:id", multer({storage: storage}).single("image"), (req, res, next) =>{
+router.put("/update/:id", checkAuth, multer({storage: storage}).single("image"), (req, res, next) =>{
 
   const url = req.protocol + "://" + req.get("host"); // server url
   
   updateData = req.body;
   updateData.id = req.params.id;
-  updateData.date = new Date(req.body.date);
 
+  if(req.body.date){
+    updateData.date = new Date(req.body.date);
+  }
   if(req.file){
     updateData.imagePath = url + "/images/blog/" + req.file.filename;
   }
@@ -137,7 +142,7 @@ router.put("/update/:id", multer({storage: storage}).single("image"), (req, res,
 });
 
 
-router.delete("/:id", (req, res, next) => {
+router.delete("/:id", checkAuth, (req, res, next) => {
 
   Blog.deleteOne({_id: req.params.id}).then(result =>{
     console.log(result);

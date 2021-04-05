@@ -1,6 +1,7 @@
 const express = require('express');
 const multer = require("multer");
 const path = require("path");
+const checkAuth = require('../middleware/check-auth');
 
 const Photo = require('../models/photo'); 
 
@@ -33,7 +34,7 @@ const storage = multer.diskStorage({
 const router = express.Router();
 
 
-router.post("/addphoto", multer({storage: storage}).single("image") ,(req, res) => {
+router.post("/addphoto", checkAuth, multer({storage: storage}).single("image") ,(req, res) => {
   const url = req.protocol + "://" + req.get("host"); // server url
 
   const photo = new Photo({
@@ -112,7 +113,7 @@ router.get("/:id", (req, res, next) =>{
 })
 
 
-router.put("/updatephoto/:id", multer({storage: storage}).single("image"), (req, res, next) =>{
+router.put("/updatephoto/:id", checkAuth, multer({storage: storage}).single("image"), (req, res, next) =>{
 
   const url = req.protocol + "://" + req.get("host"); // server url
   
@@ -133,7 +134,7 @@ router.put("/updatephoto/:id", multer({storage: storage}).single("image"), (req,
 });
 
 
-router.delete("/:id", (req, res, next) => {
+router.delete("/:id", checkAuth,(req, res, next) => {
 
   Photo.deleteOne({_id: req.params.id}).then(result =>{
     req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();

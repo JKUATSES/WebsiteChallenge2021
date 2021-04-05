@@ -1,11 +1,12 @@
 const express = require('express');
 
 const About = require('../models/about'); 
+const checkAuth = require("../middleware/check-auth");
 
 const router = express.Router();
 
 
-router.post("/create", (req, res) => {
+router.post("/create", checkAuth, (req, res) => {
   const url = req.protocol + "://" + req.get("host"); // server url
 
   const about = new About({
@@ -89,7 +90,7 @@ router.get("/:id", (req, res, next) =>{
 })
 
 
-router.put("/updateabout/:id", (req, res, next) =>{
+router.put("/updateabout/:id", checkAuth, (req, res, next) =>{
 
   const url = req.protocol + "://" + req.get("host"); // server url
   
@@ -106,7 +107,7 @@ router.put("/updateabout/:id", (req, res, next) =>{
 });
 
 
-router.delete("/:id", (req, res, next) => {
+router.delete("/:id", checkAuth, (req, res, next) => {
 
   About.deleteOne({_id: req.params.id}).then(result =>{
     req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
