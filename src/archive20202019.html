@@ -30,8 +30,8 @@
 <body>
     <!-- Start: Navbar - Apple -->
     <nav class="navbar navbar-dark navbar-expand-md fixed-top bg-dark navbar--apple">
-        <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#menu-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"><i class="la la-navicon"></i></span></button>
-            <div class="collapse navbar-collapse" id="menu-1">
+        <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#menu"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"><i class="la la-navicon"></i></span></button>
+            <div class="collapse navbar-collapse" id="menu">
                 <ul class="navbar-nav flex-grow-1 justify-content-between">
                     <li class="nav-item d-none d-xs-block d-md-block"><a class="nav-link" href="#">JKUAT SES</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
@@ -53,60 +53,124 @@
         <div class="container">
             <!-- Start: Intro -->
             <div class="intro">
-                <h2 class="text-center">Projects </h2>
+                <h2 class="text-center">Members list</h2>
                 <p class="text-center">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae. </p>
             </div><!-- End: Intro -->
         </div>
     </section><!-- End: Intro -->
-    <div class="container">
-        <!-- Start: Article Clean -->
-        <section class="article-clean">
-            <div class="container">
-                <!-- Start: Article List -->
-                <section class="article-list">
-                    <div class="container">
-                        <!-- Start: Articles -->
-                        <div class="row articles">
-                            <div class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="assets/img/desk.jpg"></a>
-                                <h3 class="name">Projects 1</h3>
-                                <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p><a class="action" href="project.html"><i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                            <div class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="assets/img/desk.jpg"></a>
-                                <h3 class="name">Project 2</h3>
-                                <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p><a class="action" href="project.html"><i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                            <div class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="assets/img/building.jpg"></a>
-                                <h3 class="name">Project 3</h3>
-                                <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p><a class="action" href="project.html"><i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                            <div class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="assets/img/building.jpg"></a>
-                                <h3 class="name">Project 4</h3>
-                                <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p><a class="action" href="project.html"><i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                            <div class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="assets/img/loft.jpg"></a>
-                                <h3 class="name">Project 5</h3>
-                                <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p><a class="action" href="project.html"><i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                            <div class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="assets/img/loft.jpg"></a>
-                                <h3 class="name">Project 6</h3>
-                                <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p><a class="action" href="project.html"><i class="fa fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div><!-- End: Articles -->
-                    </div>
-                </section><!-- End: Article List -->
-            </div><!-- Start: Highlight Clean -->
-            <section class="highlight-clean">
-                <div class="container">
-                    <!-- Start: Intro -->
-                    <div class="intro">
-                        <p class="text-center">For more information check out</p>
-                    </div><!-- End: Intro -->
-                    <!-- Start: Buttons -->
-                    <div class="buttons"><a class="btn btn-primary" role="button" href="#">GITHUB</a><a class="btn btn-primary" role="button" href="#">Youtube</a></div><!-- End: Buttons -->
-                </div>
-            </section><!-- End: Highlight Clean -->
-        </section><!-- End: Article Clean -->
-    </div><!-- Start: Footer Basic -->
+    <section>
+        <div class="container">
+            <!-- Start: Data Table --><table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Course</th>
+                <th>Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+            </tr>
+            <tr>
+                <td>Garrett Winters</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>63</td>
+            </tr>
+            <tr>
+                <td>Shou Itou</td>
+                <td>Regional Marketing</td>
+                <td>Tokyo</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>Michelle House</td>
+                <td>Integration Specialist</td>
+                <td>Sidney</td>
+                <td>37</td>
+            </tr>
+            <tr>
+                <td>Suki Burks</td>
+                <td>Developer</td>
+                <td>London</td>
+                <td>53</td>
+            </tr>
+            <tr>
+                <td>Prescott Bartlett</td>
+                <td>Technical Author</td>
+                <td>London</td>
+                <td>27</td>
+            </tr>
+        </tbody>
+    </table><!-- End: Data Table -->
+        </div>
+    </section><!-- Start: Intro -->
+    <section class="projects-horizontal">
+        <div class="container">
+            <!-- Start: Intro -->
+            <div class="intro">
+                <h2 class="text-center">Events</h2>
+                <p class="text-center">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae. </p>
+            </div><!-- End: Intro -->
+        </div>
+    </section><!-- End: Intro -->
+    <section>
+        <div class="container">
+            <!-- Start: Data Table --><table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Event Name</th>
+                <th>Event Link</th>
+                <th>Resources</th>
+                <th>Date and Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+            </tr>
+            <tr>
+                <td>Garrett Winters</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>63</td>
+            </tr>
+            <tr>
+                <td>Shou Itou</td>
+                <td>Regional Marketing</td>
+                <td>Tokyo</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>Michelle House</td>
+                <td>Integration Specialist</td>
+                <td>Sidney</td>
+                <td>37</td>
+            </tr>
+            <tr>
+                <td>Suki Burks</td>
+                <td>Developer</td>
+                <td>London</td>
+                <td>53</td>
+            </tr>
+            <tr>
+                <td>Prescott Bartlett</td>
+                <td>Technical Author</td>
+                <td>London</td>
+                <td>27</td>
+            </tr>
+        </tbody>
+    </table><!-- End: Data Table -->
+        </div>
+    </section><!-- Start: Footer Basic -->
     <footer class="footer-basic">
         <!-- Start: Social Icons -->
         <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div><!-- End: Social Icons -->

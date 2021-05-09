@@ -13,9 +13,11 @@
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400i,700,700i">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/fonts/line-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
     <link rel="stylesheet" href="assets/css/styles.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
@@ -28,8 +30,8 @@
 <body>
     <!-- Start: Navbar - Apple -->
     <nav class="navbar navbar-dark navbar-expand-md fixed-top bg-dark navbar--apple">
-        <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#menu"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"><i class="la la-navicon"></i></span></button>
-            <div class="collapse navbar-collapse" id="menu">
+        <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#menu-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"><i class="la la-navicon"></i></span></button>
+            <div class="collapse navbar-collapse" id="menu-1">
                 <ul class="navbar-nav flex-grow-1 justify-content-between">
                     <li class="nav-item d-none d-xs-block d-md-block"><a class="nav-link" href="#">JKUAT SES</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
@@ -39,7 +41,9 @@
                     <li class="nav-item"><a class="nav-link" href="testimonials.html">Testimonials</a></li>
                     <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="archive.html">Archive</a></li>
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">Archive</a>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="archive20222021.html">2022-2021</a><a class="dropdown-item" href="archive20212020.html">2021-2020</a><a class="dropdown-item" href="archive20202019.html">2020-2019</a></div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -81,24 +85,65 @@
                 </ol>
             </div><!-- End: Carousel Hero -->
         </section><!-- End: best carousel slide -->
-        <!-- Start: whoarewe -->
-        <div class="container" style="margin-top: 3%;margin-bottom: 5%;">
-            <div class="row">
-                <!-- Start: Photo -->
-                <div class="col-md-12 col-lg-6" style="padding: 0px;width: 500px;background: url(assets/img/office-front.jpeg) center / cover no-repeat;">
-                    <p><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
-                </div><!-- End: Photo -->
-                <!-- Start: Text -->
-                <div class="col-md-12 col-lg-6">
-                    <h1 class="text-dark" style="padding-top: 15px;padding-left: 15px;padding-right: 15px;">Who are we</h1>
-                    <hr>
-                    <p class="text-black-50" style="padding-left: 15px;padding-right: 15px;">The JKUAT Society of Engineering Students is a body established for that student who desires to discover what lies beyond books. SES's activities are geared towards holistic development of its members, moulding individuals who are not only well adapted at classroom level, but also stand out in the practical scene and corporate engineering world at large.</p>
-                    <div style="text-align:center"></div>
-                </div><!-- End: Text -->
-            </div>
-        </div><!-- End: whoarewe -->
     </section><!-- End: Image & Text (Non-fluid Container) -->
-    <!-- Start: Team Clean -->
+    <section>
+        <!-- Start: Accordion --><div class="accordion_bk mt-5">
+<div class="container">
+  <!-- For demo purpose -->
+<!--   <div class="row py-5">
+    <div class="col-lg-9 mx-auto text-white text-center">
+      <h1 class="display-4">Accordion</h1>
+    </div>
+  </div> -->
+
+
+  <div class="row">
+    <div class="col-lg-9 mx-auto">
+      <!-- Accordion -->
+      <div id="accordionExample" class="accordion shadow">
+
+        <!-- Accordion item 1 -->
+        <div class="card">
+          <div id="headingOne" class="card-header bg-white shadow-sm border-0">
+            <h6 class="mb-0 font-weight-bold"><a href="#" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="d-block position-relative text-dark text-uppercase collapsible-link py-2">Who are we</a></h6>
+          </div>
+          <div id="collapseOne" aria-labelledby="headingOne" data-parent="#accordionExample" class="collapse show">
+            <div class="card-body p-5">
+              <p class="font-weight-light m-0">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Accordion item 2 -->
+        <div class="card">
+          <div id="headingTwo" class="card-header bg-white shadow-sm border-0">
+            <h6 class="mb-0 font-weight-bold"><a href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="d-block position-relative collapsed text-dark text-uppercase collapsible-link py-2">When do we meet</a></h6>
+          </div>
+          <div id="collapseTwo" aria-labelledby="headingTwo" data-parent="#accordionExample" class="collapse">
+            <div class="card-body p-5">
+              <p class="font-weight-light m-0">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Accordion item 3 -->
+        <div class="card">
+          <div id="headingThree" class="card-header bg-white shadow-sm border-0">
+            <h6 class="mb-0 font-weight-bold"><a href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" class="d-block position-relative collapsed text-dark text-uppercase collapsible-link py-2">Where do we meet</a></h6>
+          </div>
+          <div id="collapseThree" aria-labelledby="headingThree" data-parent="#accordionExample" class="collapse">
+            <div class="card-body p-5">
+              <p class="font-weight-light m-0">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+</div><!-- End: Accordion -->
+    </section><!-- Start: Team Clean -->
     <section class="team-clean">
         <div class="container">
             <!-- Start: Intro -->
@@ -111,26 +156,58 @@
                 <div class="col-md-6 col-lg-4 col-xl-3 item"><img class="rounded-circle" src="assets/img/1.jpg">
                     <h3 class="name">Ben Johnson</h3>
                     <p class="title">CHAIRPERSON</p>
-                    <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                    <p class="title" style="font-size: 9px;color: rgb(65,65,65);">Lorem ipsum dolor sit amet, nec cu omnium ponderum instructior, eligendi gubergren cotidieque te eam. Sed ceteros salutatus definiebas eu, ut modo argumentum reprimique quo. Per te convenire facilisis. Eu vel noster scaevola molestiae.&nbsp;Lorem ipsum dolor sit amet, nec cu omnium ponderum instructior, eligendi gubergren cotidieque te eam. Sed</p>
+                    <div class="social"><a href="#"><i class="fa fa-linkedin-square"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
                 </div>
                 <div class="col-md-6 col-lg-4 col-xl-3 item"><img class="rounded-circle" src="assets/img/2.jpg">
                     <h3 class="name">Emily Clark</h3>
                     <p class="title">VICE CHAIRPERSON</p>
-                    <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                    <p class="title" style="font-size: 9px;color: rgb(65,65,65);">Lorem ipsum dolor sit amet, nec cu omnium ponderum instructior, eligendi gubergren cotidieque te eam. Sed ceteros salutatus definiebas eu, ut modo argumentum reprimique quo. Per te convenire facilisis. Eu vel noster scaevola molestiae.&nbsp;Lorem ipsum dolor sit amet, nec cu omnium ponderum instructior, eligendi gubergren cotidieque te eam. Sed</p>
+                    <div class="social"><a href="#"><i class="fa fa-linkedin-square"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
                 </div>
                 <div class="col-md-6 col-lg-4 col-xl-3 item"><img class="rounded-circle" src="assets/img/2.jpg">
                     <h3 class="name">Emily Clark</h3>
                     <p class="title">SECRETARY GENERAL</p>
-                    <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                    <p class="title" style="font-size: 9px;color: rgb(65,65,65);">Lorem ipsum dolor sit amet, nec cu omnium ponderum instructior, eligendi gubergren cotidieque te eam. Sed ceteros salutatus definiebas eu, ut modo argumentum reprimique quo. Per te convenire facilisis. Eu vel noster scaevola molestiae.&nbsp;Lorem ipsum dolor sit amet, nec cu omnium ponderum instructior, eligendi gubergren cotidieque te eam. Sed</p>
+                    <div class="social"><a href="#"><i class="fa fa-linkedin-square"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
                 </div>
                 <div class="col-md-6 col-lg-4 col-xl-3 item"><img class="rounded-circle" src="assets/img/3.jpg">
                     <h3 class="name">Carl Kent</h3>
                     <p class="title">TREASURER</p>
-                    <div class="social"><a href="#"><i class="fa fa-facebook-official"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+                    <p class="title" style="font-size: 9px;color: rgb(65,65,65);">Lorem ipsum dolor sit amet, nec cu omnium ponderum instructior, eligendi gubergren cotidieque te eam. Sed ceteros salutatus definiebas eu, ut modo argumentum reprimique quo. Per te convenire facilisis. Eu vel noster scaevola molestiae.&nbsp;Lorem ipsum dolor sit amet, nec cu omnium ponderum instructior, eligendi gubergren cotidieque te eam. Sed</p>
+                    <div class="social"><a href="#"><i class="fa fa-linkedin-square"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
                 </div>
             </div><!-- End: People -->
+            <!-- Start: Intro -->
+            <div class="intro" style="text-align: center;"><a class="btn btn-primary" role="button" href="#">Meet the team</a></div><!-- End: Intro -->
         </div>
     </section><!-- End: Team Clean -->
+    <!-- Start: Features Clean -->
+    <section class="features-clean">
+        <div class="container">
+            <!-- Start: Intro -->
+            <div class="intro">
+                <h2 class="text-center">Committees</h2>
+                <p class="text-center">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae. </p>
+            </div><!-- End: Intro -->
+            <!-- Start: Features -->
+            <div class="row features">
+                <div class="col-sm-6 col-lg-4 item">
+                    <h3 class="name">Publicity</h3>
+                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
+                </div>
+                <div class="col-sm-6 col-lg-4 item">
+                    <h3 class="name">Toastmasters</h3>
+                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
+                </div>
+                <div class="col-sm-6 col-lg-4 item">
+                    <h3 class="name">Women in tech</h3>
+                    <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est.</p>
+                </div>
+            </div><!-- End: Features -->
+        </div><!-- Start: Intro -->
+        <div class="intro" style="text-align: center;"><a class="btn btn-primary" role="button" href="#">Read More</a></div><!-- End: Intro -->
+    </section><!-- End: Features Clean -->
     <!-- Start: Projects Horizontal -->
     <section class="projects-horizontal">
         <div class="container">
@@ -159,25 +236,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 item">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-5"><a href="#"><img class="img-fluid" src="assets/img/loft.jpg"></a></div>
-                        <div class="col">
-                            <h3 class="name">SES BOT</h3>
-                            <p class="description">The SESbot is a robotics obstacle avoidance project developed by SES members.&nbsp;</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 item">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-5"><a href="#"><img class="img-fluid" src="assets/img/minibus.jpeg"></a></div>
-                        <div class="col">
-                            <h3 class="name">SES Board</h3>
-                            <p class="description">This is SES microcontroller board aimed at teaching members basics of microcontrollers.</p>
-                        </div>
-                    </div>
-                </div>
             </div><!-- End: Projects -->
+            <!-- Start: Intro -->
+            <div class="intro" style="text-align: center;"><a class="btn btn-primary" role="button" href="#">Explore More</a></div><!-- End: Intro -->
         </div>
     </section><!-- End: Projects Horizontal -->
     <!-- Start: Footer Basic -->

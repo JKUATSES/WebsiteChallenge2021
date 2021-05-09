@@ -13,9 +13,11 @@
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400i,700,700i">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/fonts/line-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
     <link rel="stylesheet" href="assets/css/styles.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
@@ -28,8 +30,8 @@
 <body>
     <!-- Start: Navbar - Apple -->
     <nav class="navbar navbar-dark navbar-expand-md fixed-top bg-dark navbar--apple">
-        <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#menu"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"><i class="la la-navicon"></i></span></button>
-            <div class="collapse navbar-collapse" id="menu">
+        <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#menu-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"><i class="la la-navicon"></i></span></button>
+            <div class="collapse navbar-collapse" id="menu-1">
                 <ul class="navbar-nav flex-grow-1 justify-content-between">
                     <li class="nav-item d-none d-xs-block d-md-block"><a class="nav-link" href="#">JKUAT SES</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
@@ -39,7 +41,9 @@
                     <li class="nav-item"><a class="nav-link" href="testimonials.html">Testimonials</a></li>
                     <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="archive.html">Archive</a></li>
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">Archive</a>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="archive20222021.html">2022-2021</a><a class="dropdown-item" href="archive20212020.html">2021-2020</a><a class="dropdown-item" href="archive20202019.html">2020-2019</a></div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -49,10 +53,231 @@
         <div class="container">
             <!-- Start: Intro -->
             <div class="intro">
-                <h2 class="text-center">Projects </h2>
+                <h2 class="text-center">Events</h2>
                 <p class="text-center">ses events</p>
             </div><!-- End: Intro -->
-        </div>
+        </div><!-- Start: Ultimate Event Calendar -->
+        <div class="mt-5 mb-5">
+            <div class="container" id="cal"><i class="fa fa-calendar-o d-none"></i><!-- Start: JS Day & Date -->
+                <div class="row date-cont date-sticky">
+                    <div class="col">
+                        <p class="text-center text-white mb-2 mt-2" id="year"></p>
+                    </div>
+                </div><!-- End: JS Day & Date -->
+                <!-- Start: Days Of Week -->
+                <div class="row d-none d-md-flex seven-cols days-sticky">
+                    <!-- Start: Sunday -->
+                    <div class="col-md-1 day days">
+                        <p class="text-center text-white">SUNDAY</p>
+                    </div><!-- End: Sunday -->
+                    <!-- Start: Monday -->
+                    <div class="col-md-1 day days">
+                        <p class="text-center text-white">MONDAY</p>
+                    </div><!-- End: Monday -->
+                    <!-- Start: Tuesday -->
+                    <div class="col-md-1 day days">
+                        <p class="text-center text-white">TUESDAY</p>
+                    </div><!-- End: Tuesday -->
+                    <!-- Start: Wednesday -->
+                    <div class="col-md-1 day days">
+                        <p class="text-center text-white">WEDNESDAY</p>
+                    </div><!-- End: Wednesday -->
+                    <!-- Start: Thursday -->
+                    <div class="col-md-1 day days">
+                        <p class="text-center text-white">THURSDAY</p>
+                    </div><!-- End: Thursday -->
+                    <!-- Start: Friday -->
+                    <div class="col-md-1 day days">
+                        <p class="text-center text-white">FRIDAY</p>
+                    </div><!-- End: Friday -->
+                    <!-- Start: Saturday -->
+                    <div class="col-md-1 day days">
+                        <p class="text-center text-white">SATURDAY</p>
+                    </div><!-- End: Saturday -->
+                </div><!-- End: Days Of Week -->
+                <!-- Start: Daily Events -->
+                <div class="row seven-cols">
+                    <!-- Start: Blank -->
+                    <div class="col-md-1 text-truncate d-none d-md-block pl-1 pr-1 day-blank"></div><!-- End: Blank -->
+                    <!-- Start: Blank -->
+                    <div class="col-md-1 text-truncate d-none d-md-block pl-1 pr-1 day-blank"></div><!-- End: Blank -->
+                    <!-- Start: Blank -->
+                    <div class="col-md-1 text-truncate d-none d-md-block pl-1 pr-1 day-blank"></div><!-- End: Blank -->
+                    <!-- Start: Blank -->
+                    <div class="col-md-1 text-truncate d-none d-md-block pl-1 pr-1 day-blank"></div><!-- End: Blank -->
+                    <!-- Start: 1 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">1</p><!-- End: Date -->
+                        <p class="text-center border rounded border-dark event" data-toggle="tooltip" data-bss-tooltip="" title="Click for more info">Event with&nbsp; border</p>
+                        <p class="text-center event" data-toggle="tooltip" data-bss-tooltip="" title="Click for more info">Event without border</p>
+                    </div><!-- End: 1 -->
+                    <!-- Start: 2 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">2</p><!-- End: Date -->
+                    </div><!-- End: 2 -->
+                    <!-- Start: 3 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">3</p><!-- End: Date -->
+                    </div><!-- End: 3 -->
+                    <!-- Start: 4 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">4</p><!-- End: Date -->
+                    </div><!-- End: 4 -->
+                    <!-- Start: 5 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">5</p><!-- End: Date -->
+                    </div><!-- End: 5 -->
+                    <!-- Start: 6 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">6</p><!-- End: Date -->
+                    </div><!-- End: 6 -->
+                    <!-- Start: 7 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">7</p><!-- End: Date -->
+                    </div><!-- End: 7 -->
+                    <!-- Start: 8 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">8</p><!-- End: Date -->
+                        <p class="text-center text-white bg-primary event" data-toggle="tooltip" data-bss-tooltip="" title="Click for more info">Single line event</p>
+                        <p class="text-center text-white bg-primary event" data-toggle="tooltip" data-bss-tooltip="" title="Click for more info">Mutliple line events will automatically wrap to next line</p>
+                    </div><!-- End: 8 -->
+                    <!-- Start: 9 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">9</p><!-- End: Date -->
+                        <p class="text-truncate text-center text-white bg-danger event" data-toggle="tooltip" data-bss-tooltip="" title="Click for more info">But you can also set the longer event to truncate</p>
+                    </div><!-- End: 9 -->
+                    <!-- Start: 10 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">10</p><!-- End: Date -->
+                    </div><!-- End: 10 -->
+                    <!-- Start: 11 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">11</p><!-- End: Date -->
+                    </div><!-- End: 11 -->
+                    <!-- Start: 12 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">12</p><!-- End: Date -->
+                        <p class="text-center text-white bg-dark event event-spec">Columbus<br>Day</p>
+                    </div><!-- End: 12 -->
+                    <!-- Start: 13 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">13</p><!-- End: Date -->
+                    </div><!-- End: 13 -->
+                    <!-- Start: 14 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">14</p><!-- End: Date -->
+                    </div><!-- End: 14 -->
+                    <!-- Start: 15 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">15</p><!-- End: Date -->
+                    </div><!-- End: 15 -->
+                    <!-- Start: 16 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">16</p><!-- End: Date -->
+                    </div><!-- End: 16 -->
+                    <!-- Start: 17 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">17</p><!-- End: Date -->
+                        <p class="text-center text-white bg-success event event-spec">Special Event<br>Senior Class Picnic 7:00 PM</p>
+                    </div><!-- End: 17 -->
+                    <!-- Start: 18 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">18</p><!-- End: Date -->
+                        <p class="text-center text-body bg-warning event event-next" data-toggle="tooltip" data-bss-tooltip="">Tournament Day 1</p>
+                    </div><!-- End: 18 -->
+                    <!-- Start: 19 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">19</p><!-- End: Date -->
+                        <p class="text-center text-body bg-warning event event-next" data-toggle="tooltip" data-bss-tooltip="">Tournament Day 1</p>
+                    </div><!-- End: 19 -->
+                    <!-- Start: 20 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="text-nowrap date">20</p><!-- End: Date -->
+                        <p class="text-center text-body bg-warning event" data-toggle="tooltip" data-bss-tooltip="">Tournament Day 1</p>
+                    </div><!-- End: 20 -->
+                    <!-- Start: 21 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">21</p><!-- End: Date -->
+                        <p class="text-center text-body bg-warning event event-prev" data-toggle="tooltip" data-bss-tooltip="">Tournament Day 1</p>
+                    </div><!-- End: 21 -->
+                    <!-- Start: 22 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">22</p><!-- End: Date -->
+                    </div><!-- End: 22 -->
+                    <!-- Start: 23 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">23</p><!-- End: Date -->
+                        <p class="text-center text-white bg-primary event" data-toggle="tooltip" data-bss-tooltip="" title="Click for more info">Women’s Six Week Self Defence Course<br>Every Friday<br>5:30 PM to 7:00 PM<br>Oct 30 thru Dec 4<br></p>
+                    </div><!-- End: 23 -->
+                    <!-- Start: 24 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">24</p><!-- End: Date -->
+                    </div><!-- End: 24 -->
+                    <!-- Start: 25 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="text-nowrap date">25</p><!-- End: Date -->
+                    </div><!-- End: 25 -->
+                    <!-- Start: 26 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">26</p><!-- End: Date -->
+                    </div><!-- End: 26 -->
+                    <!-- Start: 27 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">27</p><!-- End: Date -->
+                    </div><!-- End: 27 -->
+                    <!-- Start: 28 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">28</p><!-- End: Date -->
+                    </div><!-- End: 28 -->
+                    <!-- Start: 29 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">29</p><!-- End: Date -->
+                    </div><!-- End: 29 -->
+                    <!-- Start: 30 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">30</p><!-- End: Date --><a href="#"></a>
+                    </div><!-- End: 30 -->
+                    <!-- Start: 31 -->
+                    <div class="col-md-1 day bg-events">
+                        <!-- Start: Date -->
+                        <p class="date">31</p><!-- End: Date -->
+                        <p class="text-center bg-warning event event-spec"><i class="fas fa-ghost"></i>&nbsp;Halloween</p><a href="#">
+                            <p class="text-center text-body bg-warning event" data-toggle="tooltip" data-bss-tooltip="" title="Click for more info">Halloween Costume Party Kids Event<br>4:00 PM to 6:00 PM<br></p>
+                        </a>
+                    </div><!-- End: 31 -->
+                </div><!-- End: Daily Events -->
+            </div>
+        </div><!-- End: Ultimate Event Calendar -->
         <div class="container">
             <!-- Start: Timeline -->
             <section id="section-timeline">

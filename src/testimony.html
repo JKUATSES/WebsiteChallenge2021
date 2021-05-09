@@ -13,9 +13,11 @@
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400i,700,700i">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/fonts/line-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
     <link rel="stylesheet" href="assets/css/styles.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
@@ -28,8 +30,8 @@
 <body>
     <!-- Start: Navbar - Apple -->
     <nav class="navbar navbar-dark navbar-expand-md fixed-top bg-dark navbar--apple">
-        <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#menu"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"><i class="la la-navicon"></i></span></button>
-            <div class="collapse navbar-collapse" id="menu">
+        <div class="container"><button data-toggle="collapse" class="navbar-toggler" data-target="#menu-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"><i class="la la-navicon"></i></span></button>
+            <div class="collapse navbar-collapse" id="menu-1">
                 <ul class="navbar-nav flex-grow-1 justify-content-between">
                     <li class="nav-item d-none d-xs-block d-md-block"><a class="nav-link" href="#">JKUAT SES</a></li>
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
@@ -39,22 +41,14 @@
                     <li class="nav-item"><a class="nav-link" href="testimonials.html">Testimonials</a></li>
                     <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Archive</a></li>
+                    <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">Archive</a>
+                        <div class="dropdown-menu"><a class="dropdown-item" href="archive20222021.html">2022-2021</a><a class="dropdown-item" href="archive20212020.html">2021-2020</a><a class="dropdown-item" href="archive20202019.html">2020-2019</a></div>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav><!-- End: Navbar - Apple -->
-    <!-- Start: Intro -->
-    <section class="projects-horizontal">
-        <div class="container">
-            <!-- Start: Intro -->
-            <div class="intro">
-                <h2 class="text-center">Projects </h2>
-                <p class="text-center">Nunc luctus in metus eget fringilla. Aliquam sed justo ligula. Vestibulum nibh erat, pellentesque ut laoreet vitae. </p>
-            </div><!-- End: Intro -->
-        </div>
-    </section><!-- End: Intro -->
-    <div class="container">
+    <div class="container" style="margin-top: 5%;">
         <!-- Start: Article Clean -->
         <section class="article-clean">
             <div class="container">

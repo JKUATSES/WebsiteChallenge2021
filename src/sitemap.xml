@@ -4,10 +4,28 @@
         <loc>/about.html</loc>
     </url>
     <url>
-        <loc>/archive.html</loc>
+        <loc>/archive20202019.html</loc>
+    </url>
+    <url>
+        <loc>/archive20212020.html</loc>
+    </url>
+    <url>
+        <loc>/archive20222021.html</loc>
+    </url>
+    <url>
+        <loc>/blog.html</loc>
+    </url>
+    <url>
+        <loc>/blogs.html</loc>
     </url>
     <url>
         <loc>/contact.html</loc>
+    </url>
+    <url>
+        <loc>/corporateaffairs.html</loc>
+    </url>
+    <url>
+        <loc>/editorial.html</loc>
     </url>
     <url>
         <loc>/events.html</loc>
@@ -19,15 +37,30 @@
         <loc>/membership.html</loc>
     </url>
     <url>
+        <loc>/mentorship.html</loc>
+    </url>
+    <url>
+        <loc>/outreach.html</loc>
+    </url>
+    <url>
         <loc>/project.html</loc>
     </url>
     <url>
         <loc>/projects.html</loc>
     </url>
     <url>
+        <loc>/publicity.html</loc>
+    </url>
+    <url>
         <loc>/testimonials.html</loc>
     </url>
     <url>
         <loc>/testimony.html</loc>
+    </url>
+    <url>
+        <loc>/toastmasters.html</loc>
+    </url>
+    <url>
+        <loc>/womenintech.html</loc>
     </url>
 </urlset>
