@@ -13,9 +13,9 @@ const mongoose = require('mongoose');
 
 const userRoutes = require('./routes/user');
 const blogRoutes = require('./routes/blog');
-const teamRoutes = require('./routes/member');
-const servicesRoutes = require('./routes/services');
-const partnersRoutes = require('./routes/partners');
+const membersRoutes = require('./routes/members');
+const testimonialsRoutes = require('./routes/testimonials');
+const projectsRoutes = require('./routes/projects');
 const galleryRoutes = require('./routes/gallery');
 const eventsRoutes = require('./routes/events');
 const aboutRoutes = require('./routes/about');
@@ -24,8 +24,8 @@ const archiveRoutes = require('./routes/archives');
 
 const app = express();
 
-app.use(cookieParser());
-app.use(session({secret: "keep this hidden"}));
+// app.use(cookieParser());
+// app.use(session({secret: "keep this hidden"}));
 
 
 
@@ -71,9 +71,9 @@ app.use(ua.middleware("UA-193746825-1", {cookieName: '_ga'}));
 
 app.use("/api/user", userRoutes);
 app.use("/api/blog", blogRoutes);
-app.use("/api/team", teamRoutes);
-app.use("/api/services", servicesRoutes);
-app.use("/api/partners", partnersRoutes);
+app.use("/api/team", membersRoutes);
+app.use("/api/testimonials", testimonialsRoutes);
+app.use("/api/projects", projectsRoutes);
 app.use("/api/gallery", galleryRoutes);
 app.use("/api/events", eventsRoutes);
 app.use("/api/about", aboutRoutes);

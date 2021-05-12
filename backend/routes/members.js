@@ -1,10 +1,8 @@
 const express = require('express');
 const multer = require("multer");
-const path = require("path");
-
 const checkAuth = require('../middleware/check-auth');
 
-const Blog = require('../models/blog'); 
+const Member = require('../models/member'); 
 
 // multer configuration to handle file uploads to server
 const MIME_TYPE_MAP = {
@@ -21,7 +19,7 @@ const storage = multer.diskStorage({
     if(isValid){
       error = null;
     }
-    cback(error, "backend/images/blogs"); // destination folder
+    cback(error, "backend/images/members"); // destination folder
   },
   filename: (req, file, cback)=>{
     const fileName = path.parse(file.originalname.toLowerCase().split(' ').join('-')).name;
@@ -35,37 +33,37 @@ const storage = multer.diskStorage({
 const router = express.Router();
 
 
-router.post("/create", checkAuth, multer({storage: storage}).single("image") ,(req, res) => {
+router.post("/addmember", checkAuth, multer({storage: storage}).single("image") ,(req, res) => {
+
   const url = req.protocol + "://" + req.get("host"); // server url
-  const blog = new Blog({
-    title: req.body.title,
-    subTitle: req.body.subTitle,
-    topic: req.body.topic,
-    subTopic: req.body.subTitle,
-    content: req.body.content,
-    imagePath: url + "/images/blogs" + req.file.filename,
-    authorID: req.body.authorID,
-    author: req.body.author,
-    date: new Date(req.body.date),
-    claps: 0
+
+  const member = new Member({
+    email: req.body.email,
+    phone: req.body.phone,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    role: req.body.role,
+    imagePath: url + "/images/members/" + req.file.filename,
+    startDate: new Date(req.body.startDate),
+    endDate: new Date(req.body.endDate)
   });
 
-  blog.save()
-  .then(createdBlog =>{
+
+  member.save()
+  .then(createdMember =>{
     req.visitor.pageview(req.baseUrl + req.path).send();
-    
     res.status(201).json({
-      mesaage: "blog created successfully",
-      blog: {
-        ...createdBlog,
-        id: createdBlog._id 
+      mesaage: "Member created successfully",
+      member: {
+        ...createdMember,
+        id: createdMember._id 
 
       }
     });
   })
   .catch(err =>{
     res.status(401).json({
-      message: "Failed to create new blog"
+      message: "Failed to create new member"
     });
   });
 });
@@ -73,68 +71,67 @@ router.post("/create", checkAuth, multer({storage: storage}).single("image") ,(r
 
 router.get("",(req, res, next) => {
   req.visitor.pageview(req.baseUrl + req.path).send();
-  
+
   //pagination query
-  const pageSize = +req.query.pagesize;  
+  const pageSize = +req.query.pagesize; 
   const currentPage = +req.query.page;
-  const blogQuery = Blog.find();
-  let fetchedBlogs;
+  const memberQuery = Member.find();
+  let fetchedMembers;
 
   if(pageSize && currentPage){
-    blogQuery
+    memberQuery
     .skip( pageSize * (currentPage - 1))
     .limit(pageSize);
   }
 
 
-  // static mongoose method to getting the documents in collection blogs
-  blogQuery.then( documents => {
-    fetchedBlogs = documents;
-    return Blog.countDocuments();
+ 
+  memberQuery.then( documents => {
+    fetchedMembers = documents;
+    return Member.countDocuments();
   })
   .then(count =>{
     res.status(200).json({
       message: 'Succesfully sent from api',
-      body: fetchedBlogs,
-      maxBlogs: count
+      body: fetchedMembers,
+      maxMembers: count
     });
   });
 
 });
 
 
-router.get("/:id", (req, res, next) =>{
-  
-  Blog.findById(req.params.id).then(blog =>{
-    if(blog){
-      req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
-      res.status(200).json(blog);
 
+router.get("/:id", (req, res, next) =>{
+
+  Member.findById(req.params.id).then(member =>{
+    if(member){
+      req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
+      res.status(200).json(member);
     }
     else{
       res.status(404).json({
-        message: "Blog not found"
+        message: "Member not found"
       })
     }
   });
 })
 
 
-router.put("/update/:id", checkAuth, multer({storage: storage}).single("image"), (req, res, next) =>{
+router.put("/update-member/:id", checkAuth, multer({storage: storage}).single("image"), (req, res, next) =>{
 
   const url = req.protocol + "://" + req.get("host"); // server url
   
   updateData = req.body;
   updateData.id = req.params.id;
+  updateData.startDate = new Date(req.body.startDate);
+  updateData.endDate = new Date(req.body.endDate);
 
-  if(req.body.date){
-    updateData.date = new Date(req.body.date);
-  }
   if(req.file){
-    updateData.imagePath = url + "/images/blogs/" + req.file.filename;
+    updateData.imagePath = url + "/images/members/" + req.file.filename;
   }
 
-  Blog.updateOne({_id: req.params.id}, {$set:updateData})
+  Member.updateOne({_id: req.params.id}, {$set:updateData})
   .then(result => {
     req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
     res.status(200).json({ message: 'Update successful'})
@@ -144,8 +141,8 @@ router.put("/update/:id", checkAuth, multer({storage: storage}).single("image"),
 
 router.delete("/:id", checkAuth, (req, res, next) => {
 
-  Blog.deleteOne({_id: req.params.id}).then(result =>{
-    console.log(result);
+  Member.deleteOne({_id: req.params.id}).then(result =>{
+    
     req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
     res.status(200).json({
       message: 'document deleted'

@@ -64,7 +64,7 @@ router.get("/events",(req, res, next) => {
 
 router.get("/members",(req, res, next) => {
 
-  req.visitor.pageview(req.baseUrl + req.path + req.params.id).send();
+  req.visitor.pageview(req.baseUrl + req.path).send();
   
     ///pagination query
   const pageSize = +req.query.pagesize; 
