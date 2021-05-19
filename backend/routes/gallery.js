@@ -69,7 +69,7 @@ router.get("",(req, res, next) => {
   //pagination query
   const pageSize = +req.query.pagesize; 
   const currentPage = +req.query.page;
-  const galleryQuery = gallery.find();
+  const galleryQuery = Photo.find();
   let fetchedPhotos;
 
   if(pageSize && currentPage){
@@ -82,7 +82,7 @@ router.get("",(req, res, next) => {
  
   galleryQuery.then( documents => {
     fetchedPhotos = documents;
-    return Gallery.countDocuments();
+    return Photo.countDocuments();
   })
   .then(count =>{
     req.visitor.pageview(req.baseUrl + req.path).send();
