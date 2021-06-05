@@ -44,6 +44,10 @@ router.post("/addmember", checkAuth, multer({storage: storage}).single("image") 
     lastName: req.body.lastName,
     role: req.body.role,
     imagePath: url + "/images/members/" + req.file.filename,
+    bio: req.body.bio,
+    linkedIn: req.body.linkedIn,
+    twitter: req.body.twitter,
+    instagram: req.body.instagram,
     startDate: new Date(req.body.startDate),
     endDate: new Date(req.body.endDate)
   });

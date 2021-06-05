@@ -4,6 +4,8 @@ const uniqueValidator = require('mongoose-unique-validator');
 const projectSchema = mongoose.Schema({
   title: {type: String, required: true, unique: true},
   content: {type: String, required: true},
+  author: {type: String, required: true},
+  date: {type: Date, required: true},
   imagePath: {type: String, required: true},
   githubLink: {type: String, required: true},
   youtubeLink: {type: String, required: true},

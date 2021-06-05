@@ -40,6 +40,8 @@ router.post("/create", checkAuth, multer({storage: storage}).single("image") ,(r
   const project = new Project({
     title: req.body.title,
     content: req.body.content,
+    author: req.body.author,
+    date: new Date(req.body.date),
     imagePath: url + "/images/projects" + req.file.filename,
     githubLink: req.body.githubLink,
     youtubeLink: req.body.youtubeLink,

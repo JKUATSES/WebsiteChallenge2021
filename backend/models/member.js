@@ -9,8 +9,13 @@ const memberSchema = mongoose.Schema({
   email: {type: String, required: true, unique: true},
   phone: {type: Number, required: true, unique: true},
   imagePath: {type: String, required: true},
+  bio: {type: String, required: true},
+  linkedIn: {type: String, required: true, unique: true},
+  twitter: {type: String, required: true, unique: true},
+  instagram: {type: String, required: true, unique: true},
   startDate: {type: Date, required: true},
   endDate: {type: Date, required: true},
+  
 });
 
 memberSchema.plugin(uniqueValidator);
