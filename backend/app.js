@@ -30,7 +30,7 @@ const app = express();
 
 
 
-mongoose.connect("mongodb+srv://smith:P0azDgKsVzVUUbY5@cluster0.ptmmu.mongodb.net/SESWebChallenge?retryWrites=true&w=majority", {useNewUrlParser: true,  useUnifiedTopology: true } )
+mongoose.connect("mongodb+srv://smith:" + process.env.MONGO_ATLAS_PW + "@cluster0.ptmmu.mongodb.net/SESWebChallenge?retryWrites=true&w=majority", {useNewUrlParser: true,  useUnifiedTopology: true } )
 .then( () =>{
   console.log("Connected to Database");
 })
